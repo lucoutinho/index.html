@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Qual a nossa diferença de idade?</title>
+  <style>
+    body {
+      background: #ffefef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+      flex-direction: column;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background-color: #ff9ca3;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Qual a nossa diferença de idade?</h2>
+  <input type="password" id="senha" placeholder="Digite a senha">
+  <button onclick="verificarSenha()">Entrar</button>
+
+  <script>
+    function verificarSenha() {
+      const senha = document.getElementById("senha").value;
+      if (senha === "111") {
+        window.location.href = "pagina1.html";
+      } else {
+        alert("Senha incorreta! 😢");
+      }
+    }
+  </script>
+</body>
+</html>

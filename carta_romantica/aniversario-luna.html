@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Aniversário Luna!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffd6e8;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    h1 {
+      color: #ff1493;
+      text-align: center;
+      margin-top: 50px;
+      font-size: 3em;
+      animation: pulseText 2s infinite;
+    }
+
+    @keyframes pulseText {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Corações animados */
+    .heart {
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      position: absolute;
+      transform: rotate(45deg);
+      animation: pulse 2s infinite;
+      z-index: 1;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1) rotate(45deg); }
+      50% { transform: scale(1.3) rotate(45deg); }
+    }
+
+    /* Botão visível, enorme, em forma de coração */
+    .button-heart {
+      display: flex;
+      justify-content: center;
+      margin-top: 80px;
+      position: relative;
+      z-index: 9999;
+    }
+
+    .heart-btn {
+  position: relative;
+  z-index: 9999;
+  background-color: #e60000;
+  color: white;
+  font-size: 3em;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  padding: 30px 80px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+}
+
+.heart-btn:hover {
+  animation: heartPulse 1s infinite;
+  box-shadow: 0 0 50px rgba(255, 0, 0, 1);
+}
+
+    @keyframes heartPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Fogos de artifício */
+    .firework {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: yellow;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+      z-index: 2;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(100px * var(--x)), calc(100px * var(--y))) scale(0.1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feliz Aniversário LUNA!!! 🎉</h1>
+
+  <div class="button-heart">
+    <button class="heart-btn" onclick="meToque()">Me toque</button>
+  </div>
+
+  <script>
+    // Corações flutuantes
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = Math.random() * window.innerHeight + 'px';
+      heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    // Fogos de artifício
+    function createFirework() {
+      for (let i = 0; i < 20; i++) {
+        const fw = document.createElement('div');
+        fw.classList.add('firework');
+        fw.style.left = (window.innerWidth / 2) + 'px';
+        fw.style.top = (window.innerHeight / 3) + 'px';
+        fw.style.setProperty('--x', Math.cos((i / 20) * 2 * Math.PI));
+        fw.style.setProperty('--y', Math.sin((i / 20) * 2 * Math.PI));
+        document.body.appendChild(fw);
+
+        setTimeout(() => {
+          fw.remove();
+        }, 1000);
+      }
+    }
+
+    // Iniciar efeitos
+    setInterval(createHeart, 300);
+    setInterval(createFirework, 2000);
+
+    // Ação do botão
+    function meToque() {
+      alert("Você tocou! Em breve te levo para um lugar mágico...");
+       window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
